@@ -1,8 +1,7 @@
 import gsap from 'gsap'
-import { Camera } from 'three'
-
+import { PerspectiveCamera } from 'three'
 export function flyToStar(
-  camera: Camera,
+  camera: PerspectiveCamera,
   targetPosition: [number, number, number],
   onComplete?: () => void
 ): void {
@@ -16,7 +15,7 @@ export function flyToStar(
   })
 }
 
-export function flyHome(camera: Camera): void {
+export function flyHome(camera: PerspectiveCamera): void {
   gsap.to(camera.position, {
     x: 0, y: 0, z: 20,
     duration: 1.5,

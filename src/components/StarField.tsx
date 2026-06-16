@@ -3,7 +3,7 @@ import { useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 
-export function StarField({ count = 10000 }: { count?: number }) {
+export default function StarField({ count = 25000 }: { count?: number }) {
   const meshRef = useRef<THREE.Points>(null)
 
   const [positions, colors] = useMemo(() => {
@@ -47,11 +47,11 @@ export function StarField({ count = 10000 }: { count?: number }) {
   return (
     <points ref={meshRef} geometry={geo}>
       <pointsMaterial
-        size={0.35}
+        size={0.06}
         vertexColors
         sizeAttenuation
         transparent
-        opacity={0.85}
+        opacity={0.7}
       />
     </points>
   )
