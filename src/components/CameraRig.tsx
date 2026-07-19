@@ -1,54 +1,57 @@
 "use client";
 
 import { useFrame, useThree } from "@react-three/fiber";
-import { useRef } from "react";
 import * as THREE from "three";
+import { Star } from "../data/stars";
 
 export default function CameraRig({
   enteredUniverse,
+  selectedStar,
 }: {
   enteredUniverse: boolean;
+  selectedStar: Star | null;
 }) {
   const { camera } = useThree();
 
-  const mouse = useRef({
-    x: 0,
-    y: 0,
-  });
-
   useFrame(() => {
-    const targetZ = enteredUniverse ? 5 : 30;
+    let targetX = 0;
+    let targetY = 0;
+    let targetZ = enteredUniverse ? 18 : 30;
 
-    camera.position.z = THREE.MathUtils.lerp(
-      camera.position.z,
-      targetZ,
-      0.02
-    );
+    if (selectedStar) {
+      targetX = selectedStar.position[0];
+      targetY = selectedStar.position[1];
+      targetZ = 8;
+    }
 
     camera.position.x = THREE.MathUtils.lerp(
       camera.position.x,
-      mouse.current.x * 2,
+      targetX,
       0.03
     );
 
     camera.position.y = THREE.MathUtils.lerp(
       camera.position.y,
-      -mouse.current.y * 2,
+      targetY,
       0.03
     );
 
-    camera.lookAt(0, 0, 0);
+    camera.position.z = THREE.MathUtils.lerp(
+      camera.position.z,
+      targetZ,
+      0.03
+    );
+
+    if (selectedStar) {
+      camera.lookAt(
+        selectedStar.position[0],
+        selectedStar.position[1],
+        selectedStar.position[2]
+      );
+    } else {
+      camera.lookAt(0, 0, 0);
+    }
   });
-
-  if (typeof window !== "undefined") {
-    window.onmousemove = (e) => {
-      mouse.current.x =
-        (e.clientX / window.innerWidth - 0.5) * 2;
-
-      mouse.current.y =
-        (e.clientY / window.innerHeight - 0.5) * 2;
-    };
-  }
 
   return null;
 }

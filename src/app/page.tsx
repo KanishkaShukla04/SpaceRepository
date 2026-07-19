@@ -74,9 +74,12 @@ export default function Home() {
           zIndex: 1,
         }}
       >
-        <Scene enteredUniverse={enteredUniverse}
-        currentStar={currentStar} 
-        onStarSelect={setSelectedStar}/>
+        <Scene
+          enteredUniverse={enteredUniverse}
+          currentStar={currentStar}
+          selectedStar={selectedStar}
+          onStarSelect={setSelectedStar}
+        />
       </div>
       <InfoPanel
   selectedStar={selectedStar}

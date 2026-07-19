@@ -9,13 +9,15 @@ import ConstellationLines3D from "./ConstellationLines3D";
 import CameraRig from "./CameraRig";
 
 export default function Scene({
-     enteredUniverse,
-     currentStar,
-     onStarSelect,
+  enteredUniverse,
+  currentStar,
+  selectedStar,
+  onStarSelect,
 }: {
   enteredUniverse: boolean;
   currentStar: number;
-   onStarSelect: (index: number) => void;
+  selectedStar: number | null;
+  onStarSelect: (index: number) => void;
 }) {
   return (
     <Canvas camera={{ position: [0, 0, 30], fov: 75 }}
@@ -31,7 +33,13 @@ export default function Scene({
       position={[0, 0, 0]}
       intensity={1}
       />
-    {/*<CameraRig enteredUniverse={enteredUniverse} />*/}
+    <CameraRig
+      enteredUniverse={enteredUniverse}
+      selectedStar={
+      selectedStar !== null
+      ? STARS[selectedStar]
+      : null}
+      />
       <StarField />
             <ConstellationLines3D stars={STARS} />
 
@@ -39,6 +47,7 @@ export default function Scene({
         <ConstellationStar3D
           key={star.id}
           star={star}
+          selected={selectedStar === index}
           onClick={() => onStarSelect(index)}
         />
       ))}

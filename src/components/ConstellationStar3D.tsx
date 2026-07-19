@@ -6,9 +6,11 @@ import { Star } from "../data/stars";
 export default function ConstellationStar3D({
   star,
   onClick,
+  selected,
 }: {
   star: Star;
   onClick?: () => void;
+  selected?: boolean;
 }) {
   return (
     <Sphere
@@ -23,7 +25,11 @@ export default function ConstellationStar3D({
         color={star.color}
         emissive={star.color}
         emissiveIntensity={
-          star.id === "helios" ? 2 : 0.4
+          selected
+            ? 4
+            : star.id === "helios"
+            ? 2
+            : 0.4
         }
       />
     </Sphere>

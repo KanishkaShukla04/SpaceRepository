@@ -26,7 +26,7 @@ export const STARS: Star[] = [
   {
     id: "bellatrix",
     name: "BELLATRIX",
-    position: [12, 6, 0],
+    position: [18, 6, 0],
     color: "#88CCFF",
     size: 0.3,
     section: "Projects",
@@ -45,7 +45,7 @@ export const STARS: Star[] = [
   {
     id: "vega",
     name: "VEGA",
-    position: [-12, 7,0],
+    position: [-25, 12,-10],
     color: "#AAFFCC",
     size: 0.3,
     section: "Skills",
@@ -73,7 +73,7 @@ export const STARS: Star[] = [
   {
     id: "sirius",
     name: "SIRIUS",
-    position: [-10, -7, 0],
+    position: [-18, -18, -15],
     color: "#FFFFFF",
     size: 0.3,
     section: "Education",
@@ -84,14 +84,14 @@ export const STARS: Star[] = [
     cgpa: "8.08",
     school:"Mother Teresa Mission Higher Secondary School, Kanpur",
     degreeSchool: "High School",
-    percentage: "95.4%", }
+    percentage: "92%", }
 },
     
 
   {
     id: "polaris",
     name: "POLARIS",
-    position: [10, -6, 0],
+    position: [20, -16, -15],
     color: "#FFD700",
     size: 0.3,
     section: "Certifications",
@@ -103,5 +103,18 @@ export const STARS: Star[] = [
     "Full Stack Applications"
   ]},
     taglines: ["Visionary"]
+  },
+
+  {
+  id:"arcturus",
+  name:"ARCTURUS",
+  position:[0,22,-12],
+  color:"#ff9966",
+  size:0.3,
+  section:"Resume",
+  taglines:["Professional Journey"],
+  content:{
+    resume:"/Kanishka_Shukla_AI_Engineer_Resume.pdf"
   }
+}
 ];
